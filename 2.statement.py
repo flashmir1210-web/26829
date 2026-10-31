@@ -33,38 +33,27 @@ if user_input == "1":
 
 
 
-
 # 사용자에게 숫자와 연산자를 입력받아서 결과를 출력하는 프로그램
 
-number1 = input("첫번째 숫자를 입력하세요: ")
-number2 = input("두번째 숫자를 입력하세요: ")
-operator = input("연산자를 입력하세요 (+, -, *, /): ")
+number1 = input("첫번째 숫자를 입력하세요 : ")
+number2 = input("두번째 숫자를 입력하세요 : ")
+operator = input("연산자를 입력하세요 : +, -, *, / ")
 
-# 입력받은 문자열을 숫자로 변환
-number1 = float(number1)
-number2 = float(number2)
-
-# 연산자에 따른 계산
-if operator == "+":
-    result = number1 + number2
-
-elif operator == "-":
-    result = number1 - number2
-
-elif operator == "*":
-    result = number1 * number2
-
-elif operator == "/":
-    if number2 == 0:
-        print("0으로 나눌 수 없습니다.")
-        result = None
+if number1.isdigit() and number2.isdigit():
+    if operator == "+":
+        print(int(number1) + int(number2))
+    elif operator == "-":
+        print(int(number1) - int(number2))
+    elif operator == "*":
+        print(int(number1) * int(number2))
+    elif operator == "/":
+        if int(number2) == 0:
+            print("0으로 나눌 수 없습니다.")
+        else:
+            print(int(number1) / int(number2))
     else:
-        result = number1 / number2
-
+        print("잘못된 연산자입니다.")
 else:
-    print("잘못된 연산자입니다.")
-    result = None
+    print("숫자가 아닌 입력을 했습니다.")
 
-# 계산 결과 출력
-if result is not None:
-    print("계산 결과:", result)
+
