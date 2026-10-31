@@ -10,7 +10,7 @@ print("0. 게임종료")
 print("=====================")
 user_input = None
 
-while user_input != 0:
+while user_input != "0":
     user_input = input("원하는 동작을 입력하세요")
 
     if user_input == "1":
@@ -21,3 +21,13 @@ while user_input != 0:
         print("게임을 종료합니다.")
     else:
         print("잘못된 입력입니다.")
+
+
+while True:
+    user_input = "0" #input("원하는 동작을 입력하세요")
+    if user_input == "0":
+        print("게임을 종료합니다.")
+        break # 해답 if문을 포함하는 직속 while문을 종료
+
+
+
