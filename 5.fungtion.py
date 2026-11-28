@@ -54,15 +54,43 @@ def search_movie():
     print("====================")
     print(keyword, "장르로 검색된 영화", searched_movies_by_genre)
 
+def external_api_update_movie():
+    return [
+        {"title": "인사이드 아웃 2", "genre": "애니메이션", "rating": 8.7, "views": 2000},
+        {"title": "알고 사는 남자", "genre": "사극", "rating": 9.0, "views": 1693},
+        {"title": "모디노", "genre": "액션", "rating": 9.2, "views": 1236},
+        {"title": "죽섬", "genre": "스릴러", "rating": 8.5, "views": 35},
+        {"title": "토이 스토리 5", "genre": "애니메이션", "rating": 8.7, "views": 295}
+    ]
+
+def update_movie():
+    updated_movies = external_api_update_movie()
+
+    for updated_movie in updated_movies:
+        is_exist = False
+        for movie in movies:
+            if movie["title"] == updated_movie["title"]:
+                movie["genre"] = updated_movie["genre"]
+                movie["rating"] = updated_movie["rating"]
+                movie["views"] = updated_movie["views"]
+                is_exist = True
+                break
+
+        if is_exist == False:
+            movies.append(updated_movie)
+
+    print(movies)
+
 while True:
     print("====================")
     print("1. 평점 기준 조회")
     print("2. 장르별 누적조회수 조회")
     print("3. 최다 조회수 영화 조회")
-    print("4. 영화 검색")
-    print("5. 장르 검색")
+    print("4. 영화 검색하기")
+    print("5. 최신 정보 업데이트 하기")
     print("0. 종료하기")
     print("====================")
+
     choice = int(input("Enter your choice: "))
 
     if choice == 0:
@@ -76,7 +104,7 @@ while True:
     elif choice == 4:
         search_movie()
     elif choice == 5:
-        keyword = input("검색할 장르를 입력하세요: ")
-        print(search_movie_by_genre(keyword))
+        update_movie()
     else:
         print("잘못된 입력입니다.")
+
